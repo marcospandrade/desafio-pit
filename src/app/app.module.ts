@@ -16,12 +16,20 @@ import { AgGridModule } from 'ag-grid-angular';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './home/search/search.component';
+import { RankingComponent } from './home/ranking/ranking.component';
+import { HistoryComponent } from './home/history/history.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    SearchComponent,
+    RankingComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

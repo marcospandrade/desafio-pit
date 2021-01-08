@@ -1,0 +1,46 @@
+<div id="grid-search">
+    <h2> Search users and repos by GitHub Api</h2>
+	<!-- search user -->
+	<div id="search-user">
+		<form>
+			<mat-form-field>
+				<mat-label>username</mat-label>
+				<input type="text" matInput [formControl]="usernameFormControl" [(ngModel)]="usernameQuery">
+				<mat-error *ngIf="usernameFormControl.hasError('required')">
+					name is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<button mat-raised-button color="primary">Search</button>
+		</form>
+		<div id="table-user" class="container-grid">
+			<ag-grid-angular
+				style="width: 100%; height: 100%;"
+				class="ag-theme-alpine"
+				[rowData]="rowDataUser"
+				[columnDefs]="columnDefsUser">
+			</ag-grid-angular>
+		</div>
+	</div>
+
+	<!-- search repository -->
+	<div id="search-rep">
+		<form>
+			<mat-form-field>
+				<mat-label>repository</mat-label>
+				<input type="text" matInput [formControl]="repositoryFormControl" [(ngModel)]="repositoryQuery">
+				<mat-error *ngIf="repositoryFormControl.hasError('required')">
+					repositoy is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<button mat-raised-button color="primary">Search</button>
+		</form>
+		<div id="table-reps" class="container-grid">
+			<ag-grid-angular
+				style="width: 100%; height: 100%;"
+				class="ag-theme-alpine"
+				[rowData]="rowDataRep"
+				[columnDefs]="columnDefsRep">
+			</ag-grid-angular>
+		</div>
+	</div>
+</div>
