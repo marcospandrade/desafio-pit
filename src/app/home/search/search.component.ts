@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-// import { AllCommunityModules } from '@ag-grid-community/all-modules';
-
+import { GithubService } from './../../services/github.service';
 @Component({
 	selector: 'app-search',
 	templateUrl: './search.component.html',
 	styleUrls: ['./search.component.scss']
 })
 
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
+	private readonly _unsubscribe: Subject<void>;
 	usernameQuery: string;
 	usernameFormControl = new FormControl('', [
 		Validators.required,
@@ -27,10 +29,10 @@ export class SearchComponent implements OnInit {
 	public columnDefsRep;
 	public rowDataRep;
 
-	private gridApi;
-	private gridColumnApi;
-	  
-	constructor() { 
+	teste;
+
+	constructor(private _githubService: GithubService) {
+		this._unsubscribe = new Subject();
 		/* ag-grid */
 		this.columnDefsUser = [
 			{ field: 'make' },
@@ -57,22 +59,30 @@ export class SearchComponent implements OnInit {
 		];
 	}
 
-	onGridReady(params) {
-		this.gridApi = params.api;
-		this.gridColumnApi = params.columnApi;
-	
-		params.api.sizeColumnsToFit();
-		window.addEventListener('resize', function () {
-		  setTimeout(function () {
-			params.api.sizeColumnsToFit();
-		  });
-		});
-	
-		params.api.sizeColumnsToFit();
-	  }
+	searchUsersGit() {
+		if (!this.usernameFormControl.invalid) {
+			this._githubService
+			.getUser(this.usernameQuery)
+			.pipe(takeUntil(this._unsubscribe))
+			.subscribe(response => { 
+				this.teste = response 
+			})
+			console.log(this.teste)
+		}
+	}
+
+	searchReposGit() {
+		if (!this.repositoryFormControl.invalid) {
+			alert("Searching...")
+		}
+	}
+
 	ngOnInit(): void {
-		fetch('https://api.github.com/search/users')
-		.then(result => result.json())
-		.then(rowData => this.rowDataUser = rowData);
+
+	}
+
+	ngOnDestroy(): void {
+		this._unsubscribe.next();
+		this._unsubscribe.complete();
 	}
 }

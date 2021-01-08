@@ -5,12 +5,18 @@
 		<form>
 			<mat-form-field>
 				<mat-label>username</mat-label>
-				<input type="text" matInput [formControl]="usernameFormControl" [(ngModel)]="usernameQuery">
+				<input 
+					type="text" 
+					matInput 
+					[formControl]="usernameFormControl" 
+					[(ngModel)]="usernameQuery"
+					(keyup.enter)="searchUsersGit()"
+				>
 				<mat-error *ngIf="usernameFormControl.hasError('required')">
 					name is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
-			<button mat-raised-button color="primary">Search</button>
+			<button mat-raised-button color="primary" (click)="searchUsersGit()">Search</button>
 		</form>
 		<div id="table-user" class="container-grid">
 			<ag-grid-angular
@@ -27,19 +33,26 @@
 		<form>
 			<mat-form-field>
 				<mat-label>repository</mat-label>
-				<input type="text" matInput [formControl]="repositoryFormControl" [(ngModel)]="repositoryQuery">
+				<input 
+					type="text" 
+					matInput 
+					[formControl]="repositoryFormControl" 
+					[(ngModel)]="repositoryQuery"
+					(keyup.enter)="searchReposGit()"
+				>
 				<mat-error *ngIf="repositoryFormControl.hasError('required')">
 					repositoy is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
-			<button mat-raised-button color="primary">Search</button>
+			<button mat-raised-button color="primary" (click)="searchReposGit()">Search</button>
 		</form>
 		<div id="table-reps" class="container-grid">
 			<ag-grid-angular
 				style="width: 100%; height: 100%;"
 				class="ag-theme-alpine"
 				[rowData]="rowDataRep"
-				[columnDefs]="columnDefsRep">
+				[columnDefs]="columnDefsRep"
+			>
 			</ag-grid-angular>
 		</div>
 	</div>
