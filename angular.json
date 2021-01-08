@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "challenge": {
+    "desafio-pit": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/challenge",
+            "outputPath": "dist/desafio-pit",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,6 +50,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -87,18 +88,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "challenge:build"
+            "browserTarget": "desafio-pit:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "challenge:build:production"
+              "browserTarget": "desafio-pit:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "challenge:build"
+            "browserTarget": "desafio-pit:build"
           }
         },
         "test": {
@@ -113,6 +114,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -135,16 +137,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "challenge:serve"
+            "devServerTarget": "desafio-pit:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "challenge:serve:production"
+              "devServerTarget": "desafio-pit:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "challenge"
+  "defaultProject": "desafio-pit",
+  "cli": {
+    "analytics": "4a2a6a4d-af5f-4c9f-9719-6218616e2762"
+  }
 }
