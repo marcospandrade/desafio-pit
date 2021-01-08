@@ -1,1 +1,11 @@
 <p>history works!</p>
+
+histórico das últimas buscas
+
+<div class="card" *ngFor="let item of historic">
+  {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }} - {{ item.username }}
+</div>
+
+<!-- <div  *ngIf="historic$ | async as historic;">
+    
+</div> -->
