@@ -72,9 +72,16 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const historic = this.localStorageService.historic;
+    const historicRep = this.localStorageService.historicRep;
+
     if (historic.length > 0) {
       this.usernameFormControl.setValue(historic[historic.length - 1].username);
       this.callingGitUsers();
+    }
+
+    if (historicRep.length > 0) {
+      this.repositoryFormControl.setValue(historicRep[historicRep.length - 1].repository);
+      this.callingGitRepos();
     }
   }
 
@@ -92,13 +99,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchReposGit() {
     if (!this.repositoryFormControl.invalid) {
-      alert('Searching...');
+      this.localStorageService.addRep(this.repositoryFormControl.value)
+      this.callingGitRepos();
     }
   }
-
-  //   onClickNext(value): void {
-  //     this.callingGitUsers(value.page);
-  //   }
 
   private callingGitRepos(): void {
     this.loading = true;
