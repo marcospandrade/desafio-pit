@@ -46,8 +46,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     private datepipe: DatePipe
   ) {
     this.columnDefsUser = [
-      { headerName: 'Login', field: 'login' },
-      { headerName: 'Type', field: 'type' },
+      { headerName: 'Login', field: 'login', width: 60 },
+      { headerName: 'Type', field: 'type', width: 50 },
       { headerName: 'Url', field: 'url' }
     ];
 
@@ -62,9 +62,9 @@ export class SearchComponent implements OnInit, OnDestroy {
       }
     ];
 
-  //   this.columnDefsRep.valueFormatter = function(params) {
-  //     return datepipe.transform(params.value, 'dd/MM/yyyy');
-  // }
+    //   this.columnDefsRep.valueFormatter = function(params) {
+    //     return datepipe.transform(params.value, 'dd/MM/yyyy');
+    // }
     this._unsubscribe = new Subject();
 
     this.defaultUserColDef = {
@@ -72,7 +72,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       resizable: true,
       filter: true,
       flex: 1,
-      minWidth: 150
     };
 
     this.defaultReposColDef = {
@@ -104,7 +103,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   onGridUserReady(params) {
     this.gridUserApi = params.api;
     this.gridUserColumnApi = params.columnApi;
-    this.gridUserApi.sizeColumnsToFit();
+    this.gridUserApi.sizeColumnsToFit(400);
     if (this.historicLocal.length > 0) {
       this._githubService
         .getUser(this.usernameFormControl.value)

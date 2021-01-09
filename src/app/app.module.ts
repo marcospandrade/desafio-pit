@@ -59,4 +59,4 @@ import { TesteComponent } from './home/teste/teste.component';
   providers: [DatePipe],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

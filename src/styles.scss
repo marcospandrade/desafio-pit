@@ -2,21 +2,28 @@
 @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
 @import "../node_modules/ag-grid-community/dist/styles/ag-theme-material.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .container-grid {
-    margin: 0 auto;
-    height: 22.2rem;
-    width: 50rem;
-    padding: 1rem;
+  margin: 0 auto;
+  height: 22.2rem;
+  width: 50rem;
+  padding: 1rem;
 }
 
 @media (max-width: 720px) {
-    .container-grid {
-        margin: 5vh auto;
-        height: 20rem;
-        width: 25rem;
-        padding: 1rem;
-    }
+  .container-grid {
+    margin: 5vh auto;
+    height: 20rem;
+    width: 25rem;
+    padding: 1rem;
+  }
 }
