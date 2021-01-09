@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -21,18 +22,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   repositoryFormControl = new FormControl('', [Validators.required]);
 
   /*ag-grid*/
-  columnDefsUser: ColDef[] = [
-    { headerName: 'Login', field: 'login' },
-    { headerName: 'Type', field: 'type' },
-    { headerName: 'Url', field: 'url' }
-  ];
+  columnDefsUser: ColDef[];
   defaultUserColDef;
   rowDataUser;
-  columnDefsRep: ColDef[] = [
-    { headerName: 'Name', field: 'name' },
-    { headerName: 'Owner', field: 'owner.login' },
-    { headerName: 'Updated At', field: 'updated_at', sortingOrder: ['desc', 'asc'] }
-  ];
+  columnDefsRep: ColDef[];
   defaultReposColDef;
   rowDataRep;
 
@@ -49,9 +42,29 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private _githubService: GithubService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private datepipe: DatePipe
   ) {
+    this.columnDefsUser = [
+      { headerName: 'Login', field: 'login' },
+      { headerName: 'Type', field: 'type' },
+      { headerName: 'Url', field: 'url' }
+    ];
 
+    this.columnDefsRep = [
+      { headerName: 'Name', field: 'name' },
+      { headerName: 'Owner', field: 'owner.login' },
+      {
+        headerName: 'Updated At',
+        field: 'updated_at',
+        sortable: true,
+        sort: 'desc'
+      }
+    ];
+
+  //   this.columnDefsRep.valueFormatter = function(params) {
+  //     return datepipe.transform(params.value, 'dd/MM/yyyy');
+  // }
     this._unsubscribe = new Subject();
 
     this.defaultUserColDef = {
@@ -59,16 +72,18 @@ export class SearchComponent implements OnInit, OnDestroy {
       resizable: true,
       filter: true,
       flex: 1,
-      minWidth: 100
+      minWidth: 150
     };
 
     this.defaultReposColDef = {
-      sortable: true
+      resizable: true,
+      filter: true,
+      flex: 1,
+      minWidth: 150
     }
   }
 
   ngOnInit(): void {
-    // const historic = this.localStorageService.historic;
 
     if (this.historicLocal.length > 0) {
       this.usernameFormControl.setValue(this.historicLocal[this.historicLocal.length - 1].username);
@@ -99,7 +114,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         )
         .subscribe((response) => {
           this.rowDataUser = response.items
-          //params.api.setRowData(response.items);
         });
     }
   }

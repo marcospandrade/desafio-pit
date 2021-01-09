@@ -17,7 +17,7 @@
       </button>
     </form>
     <div id="table-user" class="container-grid">
-      <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-material" [columnDefs]="columnDefsUser"
+      <ag-grid-angular style="width: 100%; height:42vh" class="ag-theme-material" [columnDefs]="columnDefsUser"
         [defaultColDef]="defaultUserColDef" [pagination]="true" [rowData]="rowDataUser" [paginationPageSize]="5"
         (gridReady)="onGridUserReady($event)">
       </ag-grid-angular>

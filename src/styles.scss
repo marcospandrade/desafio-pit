@@ -11,3 +11,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 50rem;
     padding: 1rem;
 }
+
+@media (max-width: 720px) {
+    .container-grid {
+        margin: 5vh auto;
+        height: 20rem;
+        width: 25rem;
+        padding: 1rem;
+    }
+}
