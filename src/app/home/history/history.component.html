@@ -1,11 +1,37 @@
-<p>history works!</p>
+<div id="container-history">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          last 5 user searches
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="cards">
+        <mat-card *ngFor="let item of historic">
+          <mat-card-content>
+            query searched: {{ item.username }}
+            <br />
+            search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
 
-histórico das últimas buscas
-
-<div class="card" *ngFor="let item of historic">
-  {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }} - {{ item.username }}
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          last 5 repos searches
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="cards">
+        <mat-card *ngFor="let item of historicRepo">
+          <mat-card-content>
+            query searched: {{ item.repository }}
+            <br />
+            search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-
-<!-- <div  *ngIf="historic$ | async as historic;">
-    
-</div> -->

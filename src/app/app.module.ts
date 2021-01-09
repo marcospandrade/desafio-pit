@@ -10,11 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AgGridModule } from 'ag-grid-angular';
 
@@ -47,11 +48,12 @@ import { TesteComponent } from './home/teste/teste.component';
     MatGridListModule,
     MatButtonModule,
     MatCardModule,
-    MatSidenavModule,
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    MatDividerModule,
+    MatExpansionModule,
     AgGridModule.withComponents([]),
 
     CoreModule,
