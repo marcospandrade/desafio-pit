@@ -30,8 +30,12 @@ export class LocalStorageService {
     }
     value.push({ username, datetime: new Date().toISOString() });
     localStorage.setItem(HistoricKey.SYSTEM_HISTORIC, JSON.stringify(value));
-    console.log(value);
     this._historicEvent.next(value);
+  }
+
+  get historic(): Historic[] {
+    const historic = localStorage.getItem(HistoricKey.SYSTEM_HISTORIC);
+    return historic ? JSON.parse(historic) : [];
   }
 
   addRep(repository: string): void {
@@ -43,12 +47,7 @@ export class LocalStorageService {
     localStorage.setItem(HistoricKey.SYSTEM_HISTORIC_REPOS, JSON.stringify(value));
     this._historicRepEvent.next(value);
   }
-
-  get historic(): Historic[] {
-    const historic = localStorage.getItem(HistoricKey.SYSTEM_HISTORIC);
-    return historic ? JSON.parse(historic) : [];
-  }
-
+  
   get historicRep(): HistoricRep[] {
     const historicRep = localStorage.getItem(HistoricKey.SYSTEM_HISTORIC_REPOS);
     return historicRep ? JSON.parse(historicRep) : [];
