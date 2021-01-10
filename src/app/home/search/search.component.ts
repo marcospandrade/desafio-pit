@@ -1,9 +1,9 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
+import { finalize, takeUntil, map } from 'rxjs/operators';
 
 import { GithubService } from '@core/github/github.service';
 import { LocalStorageService } from '@core/local-storage/local-storage.service';
@@ -43,7 +43,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(
     private _githubService: GithubService,
     private _localStorageService: LocalStorageService,
-    private datepipe: DatePipe
   ) {
     this.columnDefsUser = [
       { headerName: 'Login', field: 'login', width: 60 },
@@ -62,9 +61,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       }
     ];
 
-    //   this.columnDefsRep.valueFormatter = function(params) {
-    //     return datepipe.transform(params.value, 'dd/MM/yyyy');
-    // }
     this._unsubscribe = new Subject();
 
     this.defaultUserColDef = {
@@ -120,7 +116,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   onGridRepReady(params) {
     this.gridRepApi = params.api;
     this.gridRepColumnApi = params.columnApi;
-    this.gridRepApi.sizeColumnsToFit();
+    this.gridRepApi.sizeColumnsToFit(400);
     if (this.historicRepLocal.length > 0) {
       this._githubService
         .getRepos(this.repositoryFormControl.value)
@@ -157,6 +153,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         finalize(() => (this.loading = false))
       )
       .subscribe((response) => {
+        response.map
         this.rowDataRep = response.items;
       })
   }

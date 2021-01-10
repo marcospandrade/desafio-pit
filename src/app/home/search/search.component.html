@@ -1,48 +1,47 @@
 <mat-progress-bar *ngIf="loading" class="example-margin" color="accent" mode="indeterminate"></mat-progress-bar>
 <div id="grid-search">
-  <h2>Search users and repos by GitHub Api</h2>
-  <!-- search user [(ngModel)]="usernameQuery" -->
-  <div id="search-user">
-    <form>
-
-      <mat-form-field>
-        <mat-label>username</mat-label>
-        <input type="text" matInput [formControl]="usernameFormControl" />
-        <mat-error *ngIf="usernameFormControl.hasError('required')">
-          name is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="accent" (click)="searchUsersGit()">
-        Search
-      </button>
-    </form>
-    <div id="table-user" class="container-grid">
-      <ag-grid-angular style="width: 100%; height:100%" class="ag-theme-material" [columnDefs]="columnDefsUser"
-        [defaultColDef]="defaultUserColDef" [pagination]="true" [rowData]="rowDataUser" [paginationPageSize]="5"
-        (gridReady)="onGridUserReady($event)">
-      </ag-grid-angular>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-  <!-- search repository  [(ngModel)]="repositoryQuery"-->
-  <div id="search-rep">
-    <form>
-      <mat-form-field>
-        <mat-label>repository</mat-label>
-        <input type="text" matInput [formControl]="repositoryFormControl" />
-        <mat-error *ngIf="repositoryFormControl.hasError('required')">
-          repositoy is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="accent" (click)="searchReposGit()">
-        Search
-      </button>
-    </form>
-    <div id="table-reps" class="container-grid">
-      <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-material" [columnDefs]="columnDefsRep"
-        [defaultColDef]="defaultReposColDef" [rowData]="rowDataRep" [pagination]="true" [paginationPageSize]="5"
-        (gridReady)="onGridRepReady($event)">
-      </ag-grid-angular>
-    </div>
-  </div>
+	<h2>Search users and repos by GitHub Api</h2>
+	<!-- search user [(ngModel)]="usernameQuery" -->
+	<div id="search-user">
+		<form>
+			<mat-form-field>
+				<mat-label>username</mat-label>
+				<input type="text" matInput [formControl]="usernameFormControl" />
+				<mat-error *ngIf="usernameFormControl.hasError('required')">
+					name is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<button mat-raised-button color="accent" (click)="searchUsersGit()">
+				Search
+			</button>
+		</form>
+		<div id="table-user" class="container-grid">
+			<ag-grid-angular style="width: 100%; height:100%" class="ag-theme-material" [columnDefs]="columnDefsUser"
+				[defaultColDef]="defaultUserColDef" [pagination]="true" [rowData]="rowDataUser" [paginationPageSize]="5"
+				(gridReady)="onGridUserReady($event)">
+			</ag-grid-angular>
+		</div>
+	</div>
+	<mat-divider></mat-divider>
+	<!-- search repository  [(ngModel)]="repositoryQuery"-->
+	<div id="search-rep">
+		<form>
+			<mat-form-field>
+				<mat-label>repository</mat-label>
+				<input type="text" matInput [formControl]="repositoryFormControl" />
+				<mat-error *ngIf="repositoryFormControl.hasError('required')">
+					repositoy is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+			<button mat-raised-button color="accent" (click)="searchReposGit()">
+				Search
+			</button>
+		</form>
+		<div id="table-reps" class="container-grid">
+			<ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-material" [columnDefs]="columnDefsRep"
+				[defaultColDef]="defaultReposColDef" [rowData]="rowDataRep" [pagination]="true" [paginationPageSize]="5"
+				(gridReady)="onGridRepReady($event)">
+			</ag-grid-angular>
+		</div>
+	</div>
 </div>

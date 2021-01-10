@@ -1,3 +1,4 @@
+import { finalize } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -18,6 +19,22 @@ export class GithubService {
     return this._http.get(`${this.API_ENDPOINT}/search/repositories`, {
       params: new HttpParams().set('q', repos),
     });
+  }
+
+  
+  getRankingLovedUsers(): Observable<any> {
+    return this._http.get(`${this.API_ENDPOINT}/search/users`, {
+      params: new HttpParams()
+      .set('q', 'followers:>=5000')
+      .set('page', '1')
+      .set('per_page', '5')
+      .set('sort', 'followers')
+      .set('order', 'desc')
+    })
+  }
+
+  getFollowersCount(url): Observable<any> {
+    return this._http.get(`${url}`)
   }
 
   getRankingRep(): Observable<any> {

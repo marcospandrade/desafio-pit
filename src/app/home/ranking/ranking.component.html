@@ -1,33 +1,31 @@
-<div class="container-ranking">
-    <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Most active users
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="container-grid">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material"
-                    [rowData]="rowDataRankingUser" [columnDefs]="columnDefsRankingUser">
-                </ag-grid-angular>
-            </div>
-        </mat-expansion-panel>
+<div id="container-ranking">
+	<h2>History Page</h2>
+	<mat-accordion>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Most loved users
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<div class="container-grid">
+				<ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material" [rowData]="rowDataRankingUser"
+					[columnDefs]="columnDefsRankingUser" (gridReady)="onGridRankingUsersReady($event)">
+				</ag-grid-angular>
+			</div>
+		</mat-expansion-panel>
 
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    last 5 repos searches
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="container-grid">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material"
-                    [columnDefs]="columnDefsRankingReps" [defaultColDef]="defaultRankingRepsColDef" [rowData]="rowDataRankingReps"
-                    (gridReady)="onGridRankingRepReady($event)"
-                    >
-                </ag-grid-angular>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
-    <h2> </h2>
-
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Top 5 reps stargazers
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<div class="container-grid">
+				<ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material"
+					[columnDefs]="columnDefsRankingReps" [defaultColDef]="defaultRankingRepsColDef" [rowData]="rowDataRankingReps"
+					(gridReady)="onGridRankingRepReady($event)">
+				</ag-grid-angular>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
 </div>
