@@ -25,24 +25,24 @@ export class SearchComponent implements OnInit, OnDestroy {
   columnDefsUser: ColDef[];
   defaultUserColDef;
   rowDataUser;
+  gridUserApi;
+  gridUserColumnApi;
+
   columnDefsRep: ColDef[];
   defaultReposColDef;
   rowDataRep;
-
-  gridUserApi;
-  gridUserColumnApi;
   gridRepApi;
   gridRepColumnApi;
 
   /*--end ag-grid*/
 
   loading: boolean;
-  historicLocal = this.localStorageService.historic;
-  historicRepLocal = this.localStorageService.historicRep;
+  historicLocal = this._localStorageService.historic;
+  historicRepLocal = this._localStorageService.historicRep;
 
   constructor(
     private _githubService: GithubService,
-    private localStorageService: LocalStorageService,
+    private _localStorageService: LocalStorageService,
     private datepipe: DatePipe
   ) {
     this.columnDefsUser = [
@@ -136,14 +136,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchUsersGit() {
     if (!this.usernameFormControl.invalid) {
-      this.localStorageService.add(this.usernameFormControl.value);
+      this._localStorageService.add(this.usernameFormControl.value);
       this.callingGitUsers();
     }
   }
 
   searchReposGit() {
     if (!this.repositoryFormControl.invalid) {
-      this.localStorageService.addRep(this.repositoryFormControl.value)
+      this._localStorageService.addRep(this.repositoryFormControl.value)
       this.callingGitRepos();
     }
   }

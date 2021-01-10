@@ -19,4 +19,15 @@ export class GithubService {
       params: new HttpParams().set('q', repos),
     });
   }
+
+  getRankingRep(): Observable<any> {
+    return this._http.get(`${this.API_ENDPOINT}/search/repositories`,{
+      params: new HttpParams()
+      .set('q', 'stars:>=10000')
+      .set('page', '1')
+      .set('per_page', '5')
+      .set('sort', 'stars')
+      .set('order', 'desc')
+    })
+  }
 }
