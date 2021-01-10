@@ -1,15 +1,23 @@
 #container-history {
-    padding: 1rem 6rem;
-    margin: auto;
-    flex: 1;
+  padding: 1rem 6rem;
+  margin: auto;
+  flex: 1;
 }
 
 #container-history .cards {
-    text-align: -webkit-center;
+  text-align: -webkit-center;
 }
 
 #container-history .mat-card {
-    width: 50vh;
+  width: 50vh;
+  margin: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  #container-history .mat-card {
+    width: 13vh;
     margin: 1rem;
     text-align: center;
+  }
 }

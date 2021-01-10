@@ -1,38 +1,38 @@
 <div id="container-history">
-  <h2>Ranking Page</h2>
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Last 5 user searches
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="cards">
-        <mat-card *ngFor="let item of historic">
-          <mat-card-content>
-            query searched: {{ item.username }}
-            <br />
-            search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-expansion-panel>
+	<h2>Ranking Page</h2>
+	<mat-accordion>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Last 5 user searches
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<div class="cards">
+				<mat-card *ngFor="let item of historic">
+					<mat-card-content>
+						query searched: {{ item.username }}
+						<br />
+						search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Last 5 repos searches
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="cards">
-        <mat-card *ngFor="let item of historicRepo">
-          <mat-card-content>
-            query searched: {{ item.repository }}
-            <br />
-            search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Last 5 repos searches
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<div class="cards">
+				<mat-card *ngFor="let item of historicRepo">
+					<mat-card-content>
+						query searched: {{ item.repository }}
+						<br />
+						search moment: {{ item.datetime | date: "dd/MM/yyyy hh:mm:ss" }}
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
 </div>

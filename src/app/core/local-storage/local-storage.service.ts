@@ -47,7 +47,7 @@ export class LocalStorageService {
     localStorage.setItem(HistoricKey.SYSTEM_HISTORIC_REPOS, JSON.stringify(value));
     this._historicRepEvent.next(value);
   }
-  
+
   get historicRep(): HistoricRep[] {
     const historicRep = localStorage.getItem(HistoricKey.SYSTEM_HISTORIC_REPOS);
     return historicRep ? JSON.parse(historicRep) : [];

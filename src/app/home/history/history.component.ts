@@ -12,8 +12,8 @@ import { LocalStorageService } from '@core/local-storage/local-storage.service';
 export class HistoryComponent implements OnInit {
   historic: Historic[];
   historicRepo: HistoricRep[];
-  
-  constructor(private _localStorageService: LocalStorageService) {}
+
+  constructor(private _localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this._localStorageService.historic$.subscribe((history) => {

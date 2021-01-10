@@ -26,7 +26,6 @@ import { SearchComponent } from './home/search/search.component';
 import { RankingComponent } from './home/ranking/ranking.component';
 import { HistoryComponent } from './home/history/history.component';
 import { CoreModule } from './core/core.module';
-import { TesteComponent } from './home/teste/teste.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { TesteComponent } from './home/teste/teste.component';
     SearchComponent,
     RankingComponent,
     HistoryComponent,
-    TesteComponent,
   ],
   imports: [
     BrowserModule,
